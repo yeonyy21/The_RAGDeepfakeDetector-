@@ -1,25 +1,4 @@
-🤖 Hybrid RAG-based Forensic Framework: Analysis Report
-🚀 Analysis Target
-File: fingersix.jpg
 
-Framework: Hybrid RAG-based Deepfake Detection Pipeline
-
-📊 Execution Log
-다음은 fingersix.jpg 파일에 대해 하이브리드 탐지 파이프라인을 실행한 콘솔 출력입니다.
-
-Shell
-
-▶ [Config] Setting up global configuration...
-▶ [Config] Using device: cuda with dtype: torch.bfloat16
-▶ [Component 1] Initializing PixelDetector (XceptionNet)...
-▶ [Component 1] PixelDetector is ready.
-▶ [KB] Initializing Knowledge Base...
-▶ [KB] Knowledge Base ready for data.
-🧠 [KB] Building Knowledge Base and FAISS-GPU Index...
-  [----------------100%----------------]
-✅ [KB] Knowledge Base indexed on GPU. 4 documents ready.
-▶ [Component 2] Initializing RAGDeepfakeDetector (BLIP, LLaVA)...
-✅ [Component 2] RAG Detector is ready.
 ==============================================
 = Hybrid Deepfake Detection Framework Start  =
 ==============================================
@@ -40,7 +19,7 @@ NOTE: The first run will download large AI models and may take a long time.
 
 --- 🏁 ANALYSIS COMPLETE ---
 ✅ FINAL HYBRID FORENSIC REPORT
-프레임워크가 최종적으로 생성한 JSON 포맷의 분석 보고서입니다.
+
 
 JSON
 
