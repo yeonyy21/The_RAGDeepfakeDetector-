@@ -1,4 +1,14 @@
-
+▶ [Config] Setting up global configuration...
+▶ [Config] Using device: cuda with dtype: torch.bfloat16
+▶ [Component 1] Initializing PixelDetector (XceptionNet)...
+▶ [Component 1] PixelDetector is ready.
+▶ [KB] Initializing Knowledge Base...
+▶ [KB] Knowledge Base ready for data.
+🧠 [KB] Building Knowledge Base and FAISS-GPU Index...
+  [----------------100%----------------]
+✅ [KB] Knowledge Base indexed on GPU. 4 documents ready.
+▶ [Component 2] Initializing RAGDeepfakeDetector (BLIP, LLaVA)...
+✅ [Component 2] RAG Detector is ready.
 ==============================================
 = Hybrid Deepfake Detection Framework Start  =
 ==============================================
@@ -8,21 +18,18 @@ NOTE: The first run will download large AI models and may take a long time.
 
 🔬 [Stage 1] Running Pixel-Level Analysis...
 📊 [Stage 1] Pixel Analysis Result: Suspicion Score = 0.38
+(참고: Stage 1은 MTCNN으로 탐지된 *얼굴* 영역만 분석하므로, 손가락의 이상 징후는 탐지하지 못하고 얼굴 픽셀만으로 낮은 점수를 반환했습니다.)
 
 🖼️  [Stage 2] Generating image caption for situational awareness...
 🖼️  [Stage 2] Image Caption: "a man holding up his hand with six fingers"
 
 🔍 [Stage 2] Searching Knowledge Base with dynamic queries...
 🔍 [Stage 2] Retrieved 1 unique forensic documents.
+(참고: "six fingers" 캡션이 포함된 쿼리가 'anat_001' 문서를 성공적으로 검색했습니다.)
 
 📝 [Stage 2] Generating final report with LLaVA model...
 
---- 🏁 ANALYSIS COMPLETE ---
-✅ FINAL HYBRID FORENSIC REPORT
-
-
-JSON
-
+--- ✅ FINAL HYBRID FORENSIC REPORT ---
 {
   "verdict": "Fake",
   "confidence": 0.99,
@@ -32,3 +39,4 @@ JSON
   },
   "reasoning": "The final verdict is 'Fake' based on a critical and undeniable contextual failure. The system identified a clear anatomical impossibility in the image: the subject's hand plainly displays six fingers. This directly violates a core forensic principle retrieved from the knowledge base (doc_id 'anat_001'): 'Generative models often fail to render complex human anatomy correctly... Look for an incorrect number of fingers'. As per the analysis prompt's instructions, this critical logical failure overrides all other findings, including the low pixel-level score from the facial analysis."
 }
+--- 🏁 ANALYSIS COMPLETE ---
