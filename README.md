@@ -1,21 +1,19 @@
 # The_RAGDeepfakeDetector-
-A Hybrid RAG-based Forensic Framework for Deepfake Detection
-This project is a two-stage deepfake detection framework. It combines pixel-level analysis (Stage 1) with contextual, logic-based analysis (Stage 2) to produce a robust forensic report.
+🤖 Hybrid RAG-based Forensic Framework
+A two-stage deepfake detection framework that combines pixel-level analysis (Stage 1) with contextual, logic-based analysis (Stage 2).
 
-The system is designed to catch not only microscopic pixel artifacts but also macroscopic logical flaws (e.g., anatomical errors like 6 fingers), which simple detectors might miss.
+This system is designed to catch not only microscopic pixel artifacts but also macroscopic logical flaws (e.g., anatomical errors like 6 fingers) that simpler detectors might miss.
 
-How It Works
-Stage 1: Pixel-Level Analysis (PixelDetector)
+⚙️ How It Works
+🔬 Stage 1: Pixel-Level Analysis
+Models: MTCNN (Face Detection) + XceptionNet (Classification)
 
-Models: MTCNN (for face detection) + XceptionNet (for classification).
+Purpose: Scans the detected face for technical, pixel-level manipulation artifacts.
 
-Purpose: Analyzes the detected face for technical, pixel-level manipulation artifacts.
+Output: A Suspicion Score & Grad-CAM heatmap.
 
-Output: A Suspicion Score and a Grad-CAM heatmap for explainability.
-
-Stage 2: Contextual Analysis (RAGDeepfakeDetector)
-
-Models: BLIP (for image captioning) + LLaVA (for reasoning) + BGE (for embeddings).
+🧠 Stage 2: Contextual & RAG Analysis
+Models: BLIP (Captioning) + LLaVA (Reasoning) + BGE (Embeddings)
 
 Technique: RAG (Retrieval-Augmented Generation) with a FAISS-GPU vector index.
 
@@ -23,12 +21,19 @@ Purpose:
 
 BLIP captions the image (e.g., "a man with six fingers").
 
-RAG searches a forensic knowledge base for relevant facts (e.g., "AI models often fail to render hands correctly").
+RAG searches a forensic KB for relevant facts (e.g., "AI models fail to render hands").
 
-LLaVA synthesizes the image, the pixel score, and the retrieved knowledge to make a final, logic-based decision.
+LLaVA synthesizes all evidence (image + pixel score + KB) for a final, logic-based verdict.
 
-Final Synthesis
+✅ Final Synthesis
+The LLaVA model combines evidence from both stages. A critical contextual failure (like 6 fingers) will override a low pixel score, ensuring logical flaws are prioritized.
 
-The LLaVA model combines evidence from both stages.
+💻 Installation (CUDA 12.1)
+Bash
 
-Key Feature: A critical contextual failure (like an anatomical error) will override a low pixel-level score, ensuring high-level logical flaws are not missed.
+# PyTorch & GPU Core
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install faiss-gpu-cu121 bitsandbytes accelerate
+
+# AI Models & Utilities
+pip install transformers sentence-transformers timm facenet-pytorch opencv-python Pillowfailure (like an anatomical error) will override a low pixel-level score, ensuring high-level logical flaws are not missed.
